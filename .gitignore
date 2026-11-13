@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+.venv/
+
+# Environment secrets
+.env
+
+# IDE
+.vscode/
+
+# Python cache
+.pytest_cache/
+
+# Local uploads
+uploads/*
+
+# Local history/runtime files
+history/*
+*.log
+
+# Backup files
+*_backup.py
+*_backup.sql

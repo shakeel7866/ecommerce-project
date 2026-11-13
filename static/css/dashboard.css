@@ -1,0 +1,160 @@
+/* ==========================================
+   PROFESSIONAL ADMIN DASHBOARD
+   UI ONLY - BACKEND UNCHANGED
+========================================== */
+
+.dashboard-container {
+    padding: 28px !important;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* ------------------------------------------
+   ALL CARDS
+------------------------------------------ */
+
+.dashboard-container .card {
+    border: 1px solid #edf1f7 !important;
+    border-radius: 16px !important;
+    background: #ffffff !important;
+    box-shadow: 0 5px 20px rgba(15, 23, 42, 0.06) !important;
+    transition: all 0.22s ease;
+    overflow: hidden;
+}
+
+.dashboard-container .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.11) !important;
+}
+
+/* ------------------------------------------
+   CARD BODY
+------------------------------------------ */
+
+.dashboard-container .card-body {
+    padding: 20px !important;
+}
+
+/* ------------------------------------------
+   HEADINGS
+------------------------------------------ */
+
+.dashboard-container h2 {
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.4px;
+    color: #0f172a !important;
+}
+
+.dashboard-container h3,
+.dashboard-container h4,
+.dashboard-container h5 {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.dashboard-container .text-muted {
+    color: #64748b !important;
+}
+
+/* ------------------------------------------
+   NUMBERS
+------------------------------------------ */
+
+.dashboard-container .card h2,
+.dashboard-container .card h3,
+.dashboard-container .card h4 {
+    font-weight: 800 !important;
+}
+
+/* ------------------------------------------
+   BUTTONS
+------------------------------------------ */
+
+.dashboard-container .btn {
+    border-radius: 8px !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    padding: 6px 12px !important;
+    transition: all 0.18s ease;
+}
+
+.dashboard-container .btn:hover {
+    transform: translateY(-1px);
+}
+
+/* ------------------------------------------
+   BADGES
+------------------------------------------ */
+
+.dashboard-container .badge {
+    border-radius: 8px !important;
+    padding: 7px 11px !important;
+    font-weight: 700 !important;
+}
+
+/* ------------------------------------------
+   ALERTS
+------------------------------------------ */
+
+.dashboard-container .alert {
+    border: 0 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 3px 14px rgba(15, 23, 42, 0.05);
+}
+
+/* ------------------------------------------
+   SEPARATORS
+------------------------------------------ */
+
+.dashboard-container hr {
+    border: 0;
+    border-top: 1px solid #e7ebf2;
+    margin: 28px 0;
+}
+
+/* ------------------------------------------
+   LINKS
+------------------------------------------ */
+
+.dashboard-container a {
+    transition: all 0.18s ease;
+}
+
+/* ------------------------------------------
+   RESPONSIVE
+------------------------------------------ */
+
+@media (max-width: 992px) {
+    .dashboard-container {
+        padding: 22px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 18px !important;
+    }
+
+    .dashboard-container h2 {
+        font-size: 23px !important;
+    }
+
+    .dashboard-container .card-body {
+        padding: 17px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .dashboard-container {
+        padding: 12px !important;
+    }
+
+    .dashboard-container .card-body {
+        padding: 15px !important;
+    }
+
+    .dashboard-container h2 {
+        font-size: 21px !important;
+    }
+}

@@ -1,0 +1,407 @@
+{% extends 'base.html' %}
+
+{% block title %}TechStore | Home{% endblock %}
+
+{% block content %}
+
+<style>
+/* ===== HOMEPAGE ===== */
+.homepage {
+    max-width: 1440px;
+    margin: auto;
+    padding: 25px 20px 50px;
+    color: #202b3c;
+}
+
+/* HERO */
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    padding: 75px 25px;
+    text-align: center;
+    color: white;
+    background: linear-gradient(120deg, #155eef, #7048c8);
+    box-shadow: 0 12px 35px rgba(39, 82, 180, .17);
+}
+
+.hero-section h1 {
+    font-size: clamp(35px, 5vw, 58px);
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+.hero-section p {
+    font-size: 19px;
+    opacity: .95;
+}
+
+.hero-section .btn {
+    padding: 13px 32px;
+    font-weight: 700;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+/* SECTION HEADINGS */
+.section-heading {
+    font-size: 29px;
+    font-weight: 750;
+    margin-bottom: 25px;
+    color: #172b4d;
+}
+
+.section-subtitle {
+    color: #758198;
+    margin-top: -17px;
+    margin-bottom: 25px;
+}
+
+/* CATEGORY CARDS */
+.category-card {
+    display: block;
+    text-decoration: none !important;
+    color: #26344a !important;
+    background: #fff;
+    border: 1px solid #edf0f5;
+    border-radius: 17px;
+    padding: 28px 12px;
+    text-align: center;
+    height: 100%;
+    transition: .3s ease;
+    box-shadow: 0 4px 14px rgba(20, 40, 80, .05);
+}
+
+.category-card:hover {
+    transform: translateY(-7px);
+    border-color: #b7caff;
+    box-shadow: 0 13px 28px rgba(30, 80, 180, .13);
+}
+
+.category-icon {
+    font-size: 38px;
+    margin-bottom: 12px;
+}
+
+.category-card h5 {
+    font-weight: 700;
+    margin: 0;
+}
+
+/* PRODUCT CARDS */
+.product-card {
+    border: 1px solid #edf0f5;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+    background: white;
+    transition: .3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px rgba(25, 50, 90, .12);
+}
+
+.product-image-wrapper {
+    height: 225px;
+    background: #f7f9fc;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 14px;
+    transition: transform .4s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.06);
+}
+
+.product-card .card-body {
+    padding: 18px;
+}
+
+.product-title {
+    font-size: 17px;
+    font-weight: 700;
+    min-height: 42px;
+    color: #26344a;
+}
+
+.product-brand {
+    color: #8792a5;
+    font-size: 13px;
+}
+
+.product-price {
+    color: #1764d9;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.product-rating {
+    color: #f4a900;
+    font-size: 14px;
+}
+
+.product-card .btn {
+    border-radius: 8px;
+    font-weight: 600;
+    padding: 9px;
+}
+
+/* CONTACT CARD */
+.message-card {
+    border: none;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 5px 20px rgba(20, 40, 80, .07);
+}
+
+/* RESPONSIVE */
+@media(max-width: 768px) {
+    .homepage {
+        padding: 15px 12px 35px;
+    }
+
+    .hero-section {
+        padding: 50px 18px;
+        border-radius: 15px;
+    }
+
+    .hero-section p {
+        font-size: 16px;
+    }
+
+    .section-heading {
+        font-size: 24px;
+    }
+
+    .product-image-wrapper {
+        height: 185px;
+    }
+
+    .category-card {
+        padding: 22px 8px;
+    }
+}
+</style>
+
+<div class="homepage">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section mb-5">
+        <h1>Welcome to TechStore</h1>
+
+        <p>
+            Discover the Latest Mobiles, Laptops & Technology
+        </p>
+
+        <a href="{{ url_for('shop') }}"
+           class="btn btn-warning btn-lg shadow-sm">
+            Shop Now <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="mb-5">
+
+        <h2 class="section-heading">Explore Categories</h2>
+        <p class="section-subtitle">
+            Find the technology you need
+        </p>
+
+        <div class="row g-4">
+
+            <div class="col-6 col-lg-3">
+                <a href="{{ url_for('category.category_products', category_name='Mobiles') }}"
+                   class="category-card">
+                    <div class="category-icon">📱</div>
+                    <h5>Mobiles</h5>
+                </a>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <a href="{{ url_for('category.category_products', category_name='Laptop') }}"
+                   class="category-card">
+                    <div class="category-icon">💻</div>
+                    <h5>Laptops</h5>
+                </a>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <!-- Smart Watch ki jagah Shoes (DB se linked) -->
+                <a href="{{ url_for('category.category_products', category_name='Shoes') }}"
+                   class="category-card">
+                    <div class="category-icon">👟</div>
+                    <h5>Shoes</h5>
+                </a>
+            </div>
+
+            <div class="col-6 col-lg-3">
+                <!-- Shop All ki jagah Electronics (DB se linked) -->
+                <a href="{{ url_for('category.category_products', category_name='Electronics') }}"
+                   class="category-card">
+                    <div class="category-icon">🎧</div>
+                    <h5>Electronics</h5>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="mb-5">
+
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <h2 class="section-heading mb-2">
+                    Featured Products
+                </h2>
+                <p class="section-subtitle mb-0">
+                    Discover our latest products and deals
+                </p>
+            </div>
+
+            <a href="{{ url_for('shop') }}"
+               class="btn btn-outline-primary">
+                View All Products <i class="fas fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+
+        <div class="row g-4 mt-2">
+
+            {% for product in products %}
+
+            <div class="col-6 col-md-4 col-lg-3">
+
+                <div class="card product-card">
+
+                    <div class="product-image-wrapper">
+
+                        {% if product[5] %}
+                        <img
+                            src="{{ url_for('static', filename='uploads/' ~ product[5]) }}"
+                            class="product-image"
+                            alt="{{ product[1] }}"
+                        >
+                        {% else %}
+                        <img
+                            src="https://via.placeholder.com/300x250?text=No+Image"
+                            class="product-image"
+                            alt="No product image"
+                        >
+                        {% endif %}
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <h5 class="product-title">
+                            {{ product[1] }}
+                        </h5>
+
+                        <p class="product-brand">
+                            {{ product[6] or 'TechStore' }}
+                        </p>
+
+                        <div class="product-rating mb-2">
+                            ⭐ {{ product[7] if product[7] else 0 }}/5
+                        </div>
+
+                        {% if product[3] and product[3]|float > product[2]|float %}
+
+                        <span class="badge bg-danger mb-2">
+                            {{ product[4] }}% OFF
+                        </span>
+
+                        <div>
+                            <del class="text-muted small">
+                                Rs. {{ product[3] }}
+                            </del>
+                        </div>
+
+                        {% endif %}
+
+                        <div class="product-price mb-3">
+                            Rs. {{ product[2] }}
+                        </div>
+
+                        <a href="{{ url_for('product.product_details', id=product[0]) }}"
+                           class="btn btn-outline-primary btn-sm w-100 mb-2">
+                            <i class="fas fa-eye me-1"></i>
+                            View Details
+                        </a>
+
+                        <a href="/cart/add/{{ product[0] }}"
+                           class="btn btn-success btn-sm w-100">
+                            <i class="fas fa-shopping-cart me-1"></i>
+                            Add To Cart
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+
+            {% else %}
+
+            <div class="col-12 text-center py-5">
+                <h4>No products available</h4>
+                <a href="{{ url_for('shop') }}"
+                   class="btn btn-primary mt-3">
+                    Explore Shop
+                </a>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </section>
+
+
+    <!-- CONTACT MESSAGES -->
+    {% if contact_messages_count is defined %}
+
+    <section class="row mt-5">
+
+        <div class="col-md-4 col-lg-3">
+
+            <div class="card message-card">
+                <div class="card-body">
+
+                    <h6 class="text-muted">
+                        Contact Messages
+                    </h6>
+
+                    <h2 class="fw-bold text-primary">
+                        {{ contact_messages_count }}
+                    </h2>
+
+                    <a href="{{ url_for('contact.contact_messages') }}"
+                       class="btn btn-outline-primary btn-sm">
+                        View Messages
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+</div>
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+{% endblock %}
