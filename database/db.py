@@ -1,4 +1,8 @@
 ﻿import mysql.connector as mysql_connector
+import os
+import tempfile
+
+import mysql.connector as mysql_connector
 
 
 class CursorWrapper:
@@ -50,7 +54,16 @@ class ConnectionWrapper:
             ssl_ca = self.app.config.get("MYSQL_SSL_CA")
 
             if ssl_ca:
-                config["ssl_ca"] = ssl_ca
+                if ssl_ca.startswith("-----BEGIN CERTIFICATE-----"):
+                    ca_file = os.path.join(tempfile.gettempdir(), "tidb-ca.pem")
+
+                    with open(ca_file, "w", encoding="utf-8") as f:
+                        f.write(ssl_ca)
+
+                    config["ssl_ca"] = ca_file
+                else:
+                    config["ssl_ca"] = ssl_ca
+
                 config["ssl_verify_cert"] = True
                 config["ssl_verify_identity"] = True
 
