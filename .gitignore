@@ -26,3 +26,8 @@ history/*
 # Backup files
 *_backup.py
 *_backup.sql
+# Local backup/temp files
+database/*backup*.py
+routes/*.backup
+temp_dashboard_cards.txt
+certs/*.pem
